@@ -105,7 +105,7 @@ public class FileUploadController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="download/{fileId}")
-	public HttpServletResponse download(@PathVariable(value="fileId") int fileId, HttpServletResponse response, RedirectAttributes redirectAttributes) {
+	public void download(@PathVariable(value="fileId") int fileId, HttpServletResponse response, RedirectAttributes redirectAttributes) {
 		// get exists files
 		File rootDir = new File(Application.ROOT);
  		File[] files = rootDir.listFiles();
@@ -133,6 +133,5 @@ public class FileUploadController {
 		} catch (IOException e) {
 			logger.info("error happened when download file:" + e.getMessage());
 		}
-		return response;
 	}
 }
